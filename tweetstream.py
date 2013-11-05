@@ -97,4 +97,4 @@ streaming_api = tweepy.streaming.Stream(auth, CustomStreamListener(), timeout=12
 
 #print >> sys.stderr, 'Filtering the public timeline for "%s"' % (' '.join(sys.argv[1:]),)
 
-streaming_api.filter(follow=None, track=['red'])
+streaming_api.filter(follow=None, track=['uiuc'])
