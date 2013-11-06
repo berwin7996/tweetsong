@@ -16,6 +16,12 @@ void setup() {
 void draw() {
   background(0);
   for (int i = 0; i < numBalls; i++) {
+    if(balls[i].isGrowing)
+      balls[i].setDiameter(balls[i].getDiameter() + 1);
+    else
+      balls[i].setDiameter(balls[i].getDiameter() - 1);
+      
+    if(balls[i].getDiameter > 100 || balls[i].getDiameter < 10) balls[i].isGrowing = !balls[i].isGrowing;
     balls[i].collide();
     balls[i].move();
     balls[i].display();  
@@ -23,7 +29,7 @@ void draw() {
 }
 
 class Ball {
-  
+  boolean isGrowing = true;
   float x, y;
   float diameter;
   float vx = 0;
@@ -83,5 +89,13 @@ class Ball {
   
   void display() {
     ellipse(x, y, diameter, diameter);
+  }
+  
+  void setDiameter(float dim){
+    diameter = dim;
+  }
+  
+  float getDiameter(){
+    return diameter;
   }
 }
