@@ -13,7 +13,7 @@ int incoming_port = 12312;
 ArrayList<String> words = new ArrayList();
 //A list of target words to search for in the query (in this case, organelles)
 //String[] targetWords ={"mitochondria", "chloroplast", "cellwall", "endoplasmic", "lysosome", "membrane", "nucleus", "ribosome"};
-String[] targetWords ={"packers", "bears", "vikings", "lions"};
+String[] targetWords ={"bears","packers",  "vikings", "lions"};
 float[] count = {0,0,0,0};//num of each tweet
 
 int numBalls = 4;
@@ -97,7 +97,8 @@ void mousePressed(){ //invokes movements of balls
 
 void draw() {
   
-  sendMsg("/freq", 60 + (balls[1].getY()/height)*40);
+  sendMsg("/freq", 60 + (balls[0].getY()/height)*40);
+  sendMsg("/freq2", 60 + (balls[1].getY()/height)*40);
   //println(60 + (balls[1].getY()/height)*40);
   background(0);
   for (int i = 0; i < numBalls; i++) { //drawing balls
@@ -175,7 +176,7 @@ class Ball {
         others[i].vx += ax;
         others[i].vy += ay;
         
-        sendMsg("/freq", (x +y)/100);
+        //sendMsg("/freq", );
         //sendMsg("/vol", (float)(float)(height - mouseY)/(float) height);
         sendMsg("/bang", 1);
       }
